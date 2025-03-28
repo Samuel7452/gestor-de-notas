@@ -13,3 +13,4 @@ class NotesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Notes
         fields = '__all__'
+        extra_kwargs = {'category': {'required': False, 'allow_null': True}}

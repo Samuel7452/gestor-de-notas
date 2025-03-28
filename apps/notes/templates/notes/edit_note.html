@@ -33,7 +33,7 @@
 
                             <div class="mb-3">
                                 <label for="id_category" class="form-label">Categoría</label>
-                                <select name="category" id="id_category" class="form-select" required>
+                                <select name="category" id="id_category" class="form-select" >
                                     <option value="" disabled>Seleccione una categoría</option>
                                     {% for category in form.category.field.queryset %}
                                         <option value="{{ category.id }}" {% if form.category.value == category.id %}selected{% endif %}>

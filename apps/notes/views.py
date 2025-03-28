@@ -6,11 +6,16 @@ from rest_framework import status
 from rest_framework import generics
 from rest_framework.generics import UpdateAPIView
 
+
 class NotesAPIView(APIView):
     def get(self, request):
         objetos = Notes.objects.all().order_by('-created_at')
         serializer = NotesSerializer(objetos, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def perform_create(self, serializer):
+        serializer.save()
+
 
 class NoteDeleteView(generics.DestroyAPIView):
     queryset = Notes.objects.all()

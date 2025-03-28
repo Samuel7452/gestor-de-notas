@@ -6,7 +6,7 @@ class Notes(models.Model):
 
     title = models.CharField(max_length=255, null=True)
     content = models.CharField(max_length=10000000, null=True)
-    category = models.ForeignKey(Categories, on_delete=models.SET_NULL, null=True)
+    category = models.ForeignKey(Categories, on_delete=models.SET_NULL, null=True, blank=True)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -23,5 +23,4 @@ class Notes(models.Model):
             'name': self.name,
         }
         return json.dumps(data)
-
 
